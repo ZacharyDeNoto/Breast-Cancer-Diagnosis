@@ -1,0 +1,234 @@
+---
+title: "DSC 680 Project 2"
+output: pdf_document
+---
+
+
+
+```{r}
+
+library(readxl)
+
+
+data <- read.csv('project_2_data.csv')
+data
+
+
+```
+
+
+```{r}
+
+data <- subset( data, select = -c( X ))
+
+
+sum(is.na(data))
+
+
+```
+
+
+
+
+```{r}
+
+library(plotly)
+fig <- plot_ly(x = data$radius_mean,
+             type = "histogram")
+fig
+
+fig <- plot_ly(x = data$texture_mean,
+             type = "histogram")
+fig
+
+fig <- plot_ly(x = data$perimeter_mean,
+             type = "histogram")
+fig
+
+fig <- plot_ly(x = data$area_mean,
+             type = "histogram")
+fig
+
+fig <- plot_ly(x = data$smoothness_mean,
+             type = "histogram")
+
+fig <- fig %>% layout(title = 'Smoothness Histogram', yaxis = list(title = 'Frequency'))
+
+
+fig
+
+fig <- plot_ly(x = data$compactness_mean,
+             type = "histogram")
+fig
+
+fig <- plot_ly(x = data$concave.points_mean,
+             type = "histogram")
+fig
+
+fig <- plot_ly(x = data$symmetry_mean,
+             type = "histogram")
+fig
+
+fig <- plot_ly(x = data$fractal_dimension_mean,
+             type = "histogram")
+fig
+
+
+
+```
+
+
+
+```{r}
+
+library(plotly)
+fig <- plot_ly(x = data$radius_se,
+             type = "histogram")
+fig
+
+fig <- plot_ly(x = data$texture_se,
+             type = "histogram")
+fig
+
+fig <- plot_ly(x = data$perimeter_se,
+             type = "histogram")
+fig
+
+fig <- plot_ly(x = data$area_se,
+             type = "histogram")
+fig
+
+fig <- plot_ly(x = data$smoothness_se,
+             type = "histogram")
+fig
+
+fig <- plot_ly(x = data$compactness_se,
+             type = "histogram")
+fig
+
+fig <- plot_ly(x = data$concave.points_se,
+             type = "histogram")
+fig
+
+fig <- plot_ly(x = data$symmetry_se,
+             type = "histogram")
+fig
+
+fig <- plot_ly(x = data$fractal_dimension_se,
+             type = "histogram")
+fig
+
+
+
+```
+
+
+```{r}
+
+library(plotly)
+fig <- plot_ly(x = data$radius_worst,
+             type = "histogram")
+fig
+
+fig <- plot_ly(x = data$texture_worst,
+             type = "histogram")
+fig
+
+fig <- plot_ly(x = data$perimeter_worst,
+             type = "histogram")
+fig
+
+fig <- plot_ly(x = data$area_worst,
+             type = "histogram")
+fig
+
+fig <- plot_ly(x = data$smoothness_worst,
+             type = "histogram")
+fig
+
+fig <- plot_ly(x = data$compactness_worst,
+             type = "histogram")
+fig
+
+fig <- plot_ly(x = data$concave.points_worst,
+             type = "histogram")
+fig
+
+fig <- plot_ly(x = data$symmetry_worst,
+             type = "histogram")
+fig
+
+fig <- plot_ly(x = data$fractal_dimension_worst,
+             type = "histogram")
+fig
+
+
+
+```
+
+
+
+
+```{r}
+
+require(dplyr)
+data<- data %>% mutate(diagnosis = ifelse(diagnosis == "B",0,1))
+
+data
+
+```
+
+
+
+```{r}
+
+cor(data$diagnosis,data$radius_mean, method = 'spearman')
+cor(data$diagnosis,data$texture_mean, method = 'spearman')
+cor(data$diagnosis,data$perimeter_mean, method = 'spearman')
+cor(data$diagnosis,data$area_mean, method = 'spearman')
+cor(data$diagnosis,data$smoothness_mean, method = 'spearman')
+cor(data$diagnosis,data$compactness_mean, method = 'spearman')
+cor(data$diagnosis,data$concavity_mean, method = 'spearman')
+cor(data$diagnosis,data$concave.points_mean, method = 'spearman')
+cor(data$diagnosis,data$symmetry_mean, method = 'spearman')
+cor(data$diagnosis,data$fractal_dimension_mean, method = 'spearman')
+
+
+```
+
+
+```{r}
+
+cor(data$diagnosis,data$radius_se, method = 'spearman')
+cor(data$diagnosis,data$texture_se, method = 'spearman')
+cor(data$diagnosis,data$perimeter_se, method = 'spearman')
+cor(data$diagnosis,data$area_se, method = 'spearman')
+cor(data$diagnosis,data$smoothness_se, method = 'spearman')
+cor(data$diagnosis,data$compactness_se, method = 'spearman')
+cor(data$diagnosis,data$concavity_se, method = 'spearman')
+cor(data$diagnosis,data$concave.points_se, method = 'spearman')
+cor(data$diagnosis,data$symmetry_se, method = 'spearman')
+cor(data$diagnosis,data$fractal_dimension_se, method = 'spearman')
+
+
+```
+
+
+
+
+```{r}
+
+cor(data$diagnosis,data$radius_worst, method = 'spearman')
+cor(data$diagnosis,data$texture_worst, method = 'spearman')
+cor(data$diagnosis,data$perimeter_worst, method = 'spearman')
+cor(data$diagnosis,data$area_worst, method = 'spearman')
+cor(data$diagnosis,data$smoothness_worst, method = 'spearman')
+cor(data$diagnosis,data$compactness_worst, method = 'spearman')
+cor(data$diagnosis,data$concavity_worst, method = 'spearman')
+cor(data$diagnosis,data$concave.points_worst, method = 'spearman')
+cor(data$diagnosis,data$symmetry_worst, method = 'spearman')
+cor(data$diagnosis,data$fractal_dimension_worst, method = 'spearman')
+
+
+```
+
